@@ -57,10 +57,12 @@
                     left: 0;
                     opacity: 0;
                     transition: opacity 1s ease-in-out;
+
                 }
 
                 img.active {
                     opacity: 1;
+
                 }
 
                 .btn-carrossel {
@@ -106,6 +108,7 @@
                     justify-self: flex-start;
                     margin-bottom: 20px;
                     margin-left: 20px;
+
                     img {
                         margin-left: 20px;
                         margin-right: 10px;
@@ -116,6 +119,15 @@
                     font-weight: 100;
                     color: #B70000;
                 }
+            }
+
+            .produto {
+                width: 100%;
+                max-width: 1260px;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
             }
         }
     }
