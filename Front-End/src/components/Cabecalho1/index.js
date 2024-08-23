@@ -10,10 +10,31 @@ import lupa from '../../assets/image/lupa.svg';
 import pessoaPixel from '../../assets/image/pessoaPixel.svg';
 import seta from '../../assets/image/seta.svg';
 import tracos from '../../assets/image/tracos.svg';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import '../../css/global.css';
 
 export default function Cabecalho1() {
+    const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate('/menu');
+        } else {
+            navigate('/login');
+        }
+    };
+
+    const handleLogout = () => {
+        // Limpa o token do localStorage
+        localStorage.removeItem('token');
+        // Redireciona para a página de login
+        navigate('/login');
+    };
+
     return (
         <section className='cabecalho1Estilo'>
             <header>
@@ -36,10 +57,15 @@ export default function Cabecalho1() {
                         </div>
 
                         <div className="contaUsuario">
-                            <Link to="/login">
+                            <button onClick={handleButtonClick} style={{ border: 'none', background: 'transparent', cursor: 'pointer' }}>
                                 <img src={pessoaPixel} alt="Pessoa representando o usuário em arte pixelada" />
                                 <h1>Minha Conta</h1>
-                            </Link>
+                                {isOpen && (
+                                    <div className="menuDropdown">
+                                        <button onClick={handleLogout}>Sair</button>
+                                    </div>
+                                )}
+                            </button>
                         </div>
 
                         <div className="carrinho">
@@ -64,7 +90,7 @@ export default function Cabecalho1() {
                     </div>
 
                     <div className="principal">
-                        
+
                         <button>Roupas Esportivas
                             <img className="seta" src={seta}
                                 alt="Seta para mostrar subcategorias" /></button>
@@ -81,12 +107,12 @@ export default function Cabecalho1() {
                         <button>Acessórios
                             <img className="seta" src={seta}
                                 alt="Seta para mostrar subcategorias" /></button>
-    
+
                         <img className='tracos' src={tracos} />
                         <button>Mais Categorias
                             <img className="seta" src={seta}
                                 alt="Seta para mostrar subcategorias" /></button>
-                        
+
                     </div>
                 </div>
             </nav>

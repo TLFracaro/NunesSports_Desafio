@@ -5,6 +5,7 @@ import Cabecalho1 from '../../components/Cabecalho1';
 import Rodape from '../../components/Rodape';
 import '../../css/global.css';
 import './index.scss';
+import loginImagem from "../../assets/image/loginImage.png"
 import api from '../../api';
 
 export default function Login() {
@@ -46,15 +47,15 @@ export default function Login() {
             };
     
             const r = await api.post(`/login`, body);
-    
+            
             console.log('Resposta da requisição:', r.data);
     
             if (r && r.data) {
                 console.log('Propriedades na resposta:', Object.keys(r.data));
             
                 if (r.data.success) {
-                    const { nome, cpf, email, privilegio } = r.data.user;
-                    console.log({ nome, cpf, email, privilegio });
+                    const { nome, cpf, email, privilegio, token } = r.data.user;
+                    localStorage.setItem('token', token);
                     navigate('/menu', { state: { nome, cpf, email, privilegio } });
                 } else {
                     if (r.status === 401) {
@@ -71,12 +72,11 @@ export default function Login() {
             }
             
         } catch (error) {
-            setTexto('Usuário não encontrado. Verifique seu e-mail e senha.');
+            console.error('Erro ao realizar login:', error);
+            setTexto('Erro ao realizar login. Verifique os detalhes e tente novamente.');
             mostrarModal();
         }
     };
-    
-    
 
     const enviar = (e) => {
         e.preventDefault();
@@ -111,27 +111,27 @@ export default function Login() {
                     </dialog>
                     <div className="imagem">
                         <img
-                            src="/assets/image/imagemLogin.svg"
-                            alt="Uma imagem representando o cliente em um catálogo de loja de roupa"
+                            src={loginImagem}
+                            alt="Uma imagem representando o cliente em uma loja de artigos esportivos"
                         />
                     </div>
                     <div className="areaLogin">
                         <div className="loginTexto">
-                            <h1>LOGIN</h1>
-                            <h2>BEM VINDO DE VOLTA!</h2>
-                            <img src="/assets/image/linhaLogin.svg" alt="Linha separando caixas de texto do título" />
+                            <h1>Login</h1>
+                            <h2>Bem vindo de Volta!</h2>
+
                         </div>
                         <form onSubmit={enviar}>
-                            <label htmlFor="email">e-mail:</label>
-                            <input id="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-                            <label htmlFor="senha">senha:</label>
-                            <input id="senha" type="password" value={senha} onChange={(e) => setSenha(e.target.value)} />
+                            <label htmlFor="email">E-mail:</label>
+                            <input id="email" placeholder='Digite o email de cadastro' type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <label htmlFor="senha">Senha:</label>
+                            <input id="senha" placeholder='Digite a senha de cadastro' type="password" value={senha} onChange={(e) => setSenha(e.target.value)} />
                             <Link to="/">Esqueceu sua senha?</Link>
                             <button type="button" onClick={enviar}> Login </button>
                         </form>
                         <div className="criarConta">
                             <p>
-                                Ainda não tem conta?<Link to="/cadastro">Clique aqui</Link>
+                                Ainda não tem conta? <Link to="/cadastro">Clique aqui</Link>
                             </p>
                         </div>
                     </div>

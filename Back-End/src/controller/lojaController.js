@@ -1,5 +1,5 @@
 //alterei aqui
-import { inserirUsuario, salvarItem, logar, listarUsuarios, excluirUsuario, alterarUsuario, excluirItem, listarItens, consultarItem, alterarItem, pesquisarUsuario } from '../repository/lojaRepository.js';
+import { inserirUsuario, salvarItem, logar, listarUsuarios, excluirUsuario, alterarUsuario, excluirItem, listarItens, consultarItem, alterarItem, pesquisarUsuario, listarItensHome } from '../repository/lojaRepository.js';
 import multer from 'multer';
 import { Router } from 'express';
 import express from 'express';
@@ -365,6 +365,27 @@ endpoints.post('/login', async (req, resp) => {
             success: false,
             error: 'Erro interno do servidor ao processar o login.',
             details: error.message,
+        });
+    }
+});
+
+/**
+ * Obter uma lista de produtos com suas imagens para a tela inicial.
+ * @name GET /produto/listar/home
+ * @function
+ * @async
+ * @param {Object} req - Objeto de requisição do Express.
+ * @param {Object} resp - Objeto de resposta do Express.
+ * @throws {Error} Se houver um erro durante a listagem dos produtos.
+ */
+endpoints.get('/produto/listar/home', async (req, resp) => {
+    try {
+        const resultadoListarHome = await listarItensHome();
+        resp.json(resultadoListarHome); // Envia a resposta como JSON
+    } catch (error) {
+        console.error('Erro ao listar produtos para a home:', error);
+        resp.status(400).send({
+            erro: error.message,
         });
     }
 });

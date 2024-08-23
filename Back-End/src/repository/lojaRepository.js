@@ -354,3 +354,22 @@ export async function logar(email, senha) {
         throw new Error(`Erro ao logar: ${error.message}`);
     }
 }
+
+export async function listarItensHome() {
+    try {
+        const query = `
+            SELECT 
+                item.sku, 
+                item.nome, 
+                item.preco, 
+                MIN(imagens.imagem_base64) AS imagem_base64
+            FROM item
+            LEFT JOIN imagens ON item.sku = imagens.item_sku
+            GROUP BY item.sku, item.nome, item.preco
+        `;
+        const [produtos] = await con.query(query);
+        return produtos;
+    } catch (error) {
+        throw new Error(`Erro ao listar produtos com imagens: ${error.message}`);
+    }
+}

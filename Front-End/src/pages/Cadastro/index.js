@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import '../../css/global.css';
 import { useEffect, useRef, useState, } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import api from '../../api';
 
 
@@ -47,12 +48,12 @@ export default function Cadastro() {
         const cpfNumeros = cpf.replace(/\D/g, '');
         const senhasSaoIguais = validarSenhas(senha, confSenha);
         const emailsSaoIguaisEValidos = email === confEmail && emailValido;
-    
+
         console.log("CPF:", cpfNumeros.length);
         console.log("Email válido:", emailValido);
         console.log("Senhas são iguais?", senhasSaoIguais);
         console.log("E-mails são iguais e válidos?", emailsSaoIguaisEValidos);
-    
+
         if (cpfNumeros.length !== 11) {
             setTexto('Cpf inválido!');
             mostrarModal();
@@ -65,7 +66,7 @@ export default function Cadastro() {
             setTexto('Senhas não coincidem!');
             mostrarModal();
         }
-    
+
         if (cpfNumeros.length === 11 && emailValido && senhasSaoIguais && emailsSaoIguaisEValidos) {
             try {
                 let privilegio = 'normal';
@@ -76,24 +77,24 @@ export default function Cadastro() {
                     senha: senha,
                     privilegio: privilegio
                 };
-    
+
                 console.log('Enviando requisição com body:', body);
-    
+
                 const response = await api.post('/usuario/', body);
                 console.log('Resposta da requisição:', response);
                 setTexto('Usuário cadastrado com sucesso!');
                 mostrarModal();
-    
+
                 setTimeout(() => {
                     navigate('/login');
                 }, 2000);
             } catch (error) {
                 console.error('Erro ao cadastrar usuário:', error);
-    
+
                 if (error.response && error.response.status === 400) {
                     setTexto('O CPF ou E-mail já foi cadastrado no sistema!');
-                } 
-    
+                }
+
                 mostrarModal();
             }
         } else {
@@ -106,7 +107,7 @@ export default function Cadastro() {
             }
         }
     };
-    
+
 
 
     const formatarCpf = (value) => {
@@ -165,7 +166,7 @@ export default function Cadastro() {
 
     return (
         <section className='CadastroEstilo'>
-            
+
             <Cabecalho1 />
 
             <main>
@@ -179,29 +180,32 @@ export default function Cadastro() {
                     <div className="areaCadastro">
                         <div className="loginTexto">
                             <h1>Cadastro</h1>
-                            <h2>faca parte do nosso time!</h2>
-                            <img src={linhaLogin}
-                                alt="Linha  separando caixas de texto do titulo"></img>
+                            <h2>★ Vem fazer parte do nosso time ★</h2>
                         </div>
                         <form action="">
-                            <label for="">nome completo:</label>
-                            <input type="text" value={nome} onChange={e => setNome(e.target.value)} />
+                            <label for="">Nome completo:</label>
+                            <input type="text" placeholder='Digite seu nome completo' value={nome} onChange={e => setNome(e.target.value)} />
 
-                            <label for="">cpf:</label>
-                            <input type="text" value={cpf} onChange={identificarCpf} style={cpfValdio ? { border: '2px solid red' } : validarCpf(cpf) ? { border: '2px solid green' } : null} />
+                            <label for="">CPF:</label>
+                            <input type="text" placeholder='Digite seu CPF' value={cpf} onChange={identificarCpf} style={cpfValdio ? { border: '2px solid red' } : validarCpf(cpf) ? { border: '2px solid green' } : null} />
 
                             <label>E-mail:</label>
-                            <input type="text" value={email} onChange={(e) => { setEmail(e.target.value); setEmailValido(validarEmail(e.target.value)); }} style={!email ? { border: 'none' } : emailValido ? { border: '2px solid green' } : { border: '2px solid red' }} />
+                            <input type="text" placeholder='Digite seu e-mail' value={email} onChange={(e) => { setEmail(e.target.value); setEmailValido(validarEmail(e.target.value)); }} style={!email ? { border: 'none' } : emailValido ? { border: '2px solid green' } : { border: '2px solid red' }} />
 
                             <label>Confirmar E-mail:</label>
-                            <input type="text" value={confEmail} onChange={(e) => setConfEmail(e.target.value)} onBlur={() => { setEmailValido(email === confEmail && validarEmail(confEmail)); }} style={!confEmail ? { border: 'none' } : email === confEmail && emailValido ? { border: '2px solid green' } : { border: '2px solid red' }} />
+                            <input type="text" placeholder='Confirme seu e-mail' value={confEmail} onChange={(e) => setConfEmail(e.target.value)} onBlur={() => { setEmailValido(email === confEmail && validarEmail(confEmail)); }} style={!confEmail ? { border: 'none' } : email === confEmail && emailValido ? { border: '2px solid green' } : { border: '2px solid red' }} />
 
                             <label>Senha:</label>
-                            <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} onBlur={() => { validarSenhasInput(senha, confSenha); }} style={!senha ? { border: 'none' } : senhasIguais ? { border: '2px solid green' } : { border: '2px solid red' }} />
+                            <input type="password" placeholder='Digite uma senha' value={senha} onChange={(e) => setSenha(e.target.value)} onBlur={() => { validarSenhasInput(senha, confSenha); }} style={!senha ? { border: 'none' } : senhasIguais ? { border: '2px solid green' } : { border: '2px solid red' }} />
 
                             <label>Confirmar Senha:</label>
-                            <input type="password" value={confSenha} onChange={(e) => setConfSenha(e.target.value)} onBlur={() => { validarSenhasInput(senha, confSenha); }} style={!confSenha ? { border: 'none' } : senhasIguais ? { border: '2px solid green' } : { border: '2px solid red' }} />
+                            <input type="password" placeholder='Confirme sua senha' value={confSenha} onChange={(e) => setConfSenha(e.target.value)} onBlur={() => { validarSenhasInput(senha, confSenha); }} style={!confSenha ? { border: 'none' } : senhasIguais ? { border: '2px solid green' } : { border: '2px solid red' }} />
                             <button type="button" onClick={enviarCadastro}>Cadastrar-se</button>
+                            <div className="possuiConta">
+                            <p>
+                                Já possui uma conta? <Link to="/login">Clique aqui</Link>
+                            </p>
+                        </div>
                         </form>
                     </div>
                 </section>

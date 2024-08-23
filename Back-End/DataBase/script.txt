@@ -1,6 +1,7 @@
-create database db_LojaDeRoupas;
-drop database db_LojaDeRoupas;
-use db_LojaDeRoupas;
+drop database db_nunessports;
+
+create database db_nunessports;
+use db_nunessports;
 
 create table usuario(
     nome varchar(255) not null,

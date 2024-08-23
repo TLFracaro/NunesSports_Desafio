@@ -23,14 +23,15 @@
             max-width: 800px;
             height: 100%;
             max-height: 1100px;
-            background-color: black;
+            background-color: #001D3D;
             padding: 50px;
+            border: #fff double 25px;
 
             dialog {
                 overflow-x: hidden;
                 overflow-y: hidden;
                 transition: 0.8s;
-                font-family: 'K2D Bold';
+                font-family: 'K2D Extra Bold';
                 position: fixed;
                 top: 50%;
                 left: 50%;
@@ -38,24 +39,25 @@
                 background-color: white;
                 padding: 20px;
                 border: none;
-                border-radius: 20px;
+                border-radius: 30px;
                 max-width: 80%;
                 max-height: 80%;
                 min-width: 400px;
                 font-size: 18px;
                 text-align: center;
                 z-index: 2;
+                border: #B70000 double 25px;
 
                 button {
                     margin-top: 20px;
-                    background-color: black;
+                    background-color: #001D3D;
                     border-radius: 20px;
                     color: white;
                     border: none;
                     height: 40px;
                     width: 100px;
                     font-size: 14px;
-                    font-family: 'K2D Bold';
+                    font-family: 'K2D Extra Bold';
                     cursor: pointer;
                 }
 
@@ -87,21 +89,20 @@
                     display: flex;
                     justify-content: center;
                     text-align: center;
-                    font-family: retroFont;
+                    font-family: 'Krike Decor';
                     color: white;
-                    font-size: 42px;
-                    margin-bottom: 20px;
+                    font-size: 92px;
                 }
 
                 h2 {
                     display: flex;
                     justify-content: center;
                     text-align: center;
-                    font-family: retroFont;
-                    font-size: 16px;
+                    font-family: "Krike Decor";
+                    font-size: 32px;
                     color: white;
-                    margin-bottom: 20px;
                 }
+
 
                 img {
                     width: 100%;
@@ -123,8 +124,8 @@
                         outline: none;
                         align-self: flex-start;
                         width: 100%;
-                        max-width: 350px;
-                        height: 40px;
+                        max-width: 400px;
+                        height: 5cqb;
                         border-radius: 20px;
                         border-radius: 20px;
                         font-size: 16px;
@@ -138,12 +139,13 @@
 
                 button {
                     width: 284px;
-                    height: 45px;
-                    border-radius: 20px;
-                    font-family: retroFont;
+                    height: 50px;
+                    border-radius: 30px;
+                    font-family: "K2D Extra Bold";
                     margin-top: 40px;
                     border: none;
                     cursor: pointer;
+                    font-size: 16px;
 
                     &:hover {
                         transition: 0.2s;
@@ -155,13 +157,12 @@
                 label {
                     align-self: flex-start;
                     height: 18px;
-                    margin-left: 30px;
-                    margin-top: 20px;
-                    margin-bottom: 20px;
+                    margin-left: 20px;
                     color: white;
-                    font-family: retroFont;
-                    margin-top: 20px;
-                    margin-bottom: 20px;
+                    font-family: 'K2D Extra Bold';
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                    font-size: 18px;
                 }
 
                 a {
@@ -170,20 +171,21 @@
                     margin-right: 15px;
                     margin-bottom: 15px;
                     color: white;
-                    font-family: retroFont;
+                    font-family: 'K2D Extra Bold';
                     font-size: 8px;
                 }
             }
 
-            .criarConta {
+            .possuiConta {
                 margin-top: 15px;
 
                 p {
                     color: white;
-                    font-family: retroFont;
-                    font-size: 8px;
+                    font-family: "K2D Medium";
+                    font-size: 12px;
 
                     a {
+                        font-size: 12px;
                         color: #5C92FB;
                     }
                 }

@@ -26,3 +26,11 @@
     font-family: 'Sport';
     src: url(../assets/font/Sport.ttf);
 }   
+@font-face {
+    font-family: 'Krike Decor';
+    src: url(../assets/font/KrinkesDecorPERSONAL.ttf);
+}   
+@font-face {
+    font-family: 'Krike Regular';
+    src: url(../assets/font/KrinkesRegularPERSONAL.ttf);
+}   

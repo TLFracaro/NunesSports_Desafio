@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import App from "./pages/Home/App.js";
 import Cadastro from "./pages/Cadastro/index.js";
@@ -10,22 +11,43 @@ import VizualizarProdutos from "./pages/VizualizarProdutos/index.js";
 import Login from './pages/Login/index.js';
 import Alterar from './pages/AlterarProduto/index.js';
 
+const isAuthenticated = () => {
+    const token = localStorage.getItem('token');
+    return !!token;
+};
+
+const isUserAdmin = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const privilegio = decodedToken.privilegio;
+        return privilegio === 'ADMIN';
+    }
+    return false;
+};
+
+const PrivateRoute = ({ element, ...props }) => {
+    return isAuthenticated() ? element : <Navigate to="/login" />;
+};
+
+const AdminRoute = ({ element, ...props }) => {
+    return isUserAdmin() ? element : <Navigate to="/login" />;
+};
+
 export default function Rotas() {
-    return(
+    return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<App />} />
                 <Route path="/cadastro" element={<Cadastro />} />
-                <Route path="/cadastrodeprodutos" element={<CadastroDeProdutos />} />
-                <Route path="/gerenciamentousuario" element={<GerenciamentoUsuario />} />
-                <Route path="/menu" element={<Menu />} />
-                <Route path="/produtos" element={<Produtos />} />
-                <Route path="/vizualizarprodutos" element={<VizualizarProdutos />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/alterarproduto" element={<Alterar />} />
-                {/* <Route path='/*' element={<NaoEncontrado />} /> */}
+                <Route path="/cadastrodeprodutos" element={<AdminRoute element={<CadastroDeProdutos />} />} />
+                <Route path="/gerenciamentousuario" element={<AdminRoute element={<GerenciamentoUsuario />} />} />
+                <Route path="/menu" element={<PrivateRoute element={<Menu />} />} />
+                <Route path="/produtos" element={<AdminRoute element={<Produtos />} />} />
+                <Route path="/vizualizarprodutos" element={<AdminRoute element={<VizualizarProdutos />} />} />
+                <Route path="/alterarproduto" element={<AdminRoute element={<Alterar />} />} />
             </Routes>
         </BrowserRouter>
     );
 }
-
