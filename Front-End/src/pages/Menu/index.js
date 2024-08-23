@@ -9,11 +9,11 @@ import Rodape from "../../components/Rodape";
 
 export default function Menu() {
     const location = useLocation();
-    const { nome, cpf, email } = location.state || {};
+    const { nome, cpf, email, privilegio } = location.state || {};
 
     useEffect(() => {
-        localStorage.setItem("userData", JSON.stringify({ nome, cpf, email }));
-    }, [nome, cpf, email]);
+        localStorage.setItem("userData", JSON.stringify({ nome, cpf, email, privilegio }));
+    }, [nome, cpf, email, privilegio]);
 
     const [storedUserData, setStoredUserData] = useState(null);
 
@@ -29,7 +29,7 @@ export default function Menu() {
     return (
         <section className="MenuEstilo">
 
-            < Cabecalho2/>
+            <Cabecalho2 />
 
             <main>
                 <div className="mainConteudo">

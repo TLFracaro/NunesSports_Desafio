@@ -5,7 +5,8 @@ import Cabecalho1 from '../../components/Cabecalho1';
 import Rodape from '../../components/Rodape';
 import '../../css/global.css';
 import './index.scss';
-import loginImagem from "../../assets/image/loginImage.png"
+import loginImagem from "../../assets/image/loginImage.png";
+import { jwtDecode } from 'jwt-decode'; // Ajustado para usar a exportação nomeada
 import api from '../../api';
 
 export default function Login() {
@@ -35,42 +36,38 @@ export default function Login() {
 
     const login = async () => {
         try {
+            // Validação dos campos de entrada
             if (email.trim() === '' || senha.trim() === '') {
                 setTexto('Preencha os campos e-mail e senha!');
                 mostrarModal();
                 return;
             }
-    
-            let body = {
-                email: email,
-                senha: senha,
-            };
-    
-            const r = await api.post(`/login`, body);
-            
-            console.log('Resposta da requisição:', r.data);
-    
-            if (r && r.data) {
-                console.log('Propriedades na resposta:', Object.keys(r.data));
-            
-                if (r.data.success) {
-                    const { nome, cpf, email, privilegio, token } = r.data.user;
-                    localStorage.setItem('token', token);
-                    navigate('/menu', { state: { nome, cpf, email, privilegio } });
-                } else {
-                    if (r.status === 401) {
-                        setTexto('Usuário não encontrado. Verifique seu e-mail e senha.');
-                    } else {
-                        setTexto('Erro ao realizar login. Verifique os detalhes e tente novamente.');
-                    }
-                    mostrarModal();
-                }
+
+            const body = { email, senha };
+
+            // Requisição ao servidor
+            const response = await api.post(`/login`, body);
+            console.log('Resposta da requisição:', response.data);
+
+            // Verificação da resposta
+            if (response.data.message === 'Login bem-sucedido') {
+                const { token } = response.data;
+                // Armazenamento do token (considere usar cookies em vez de localStorage)
+                localStorage.setItem('token', token);
+
+                // Decodificar o token para obter os dados do usuário
+                const decodedToken = jwtDecode(token); // Ajustado para usar jwtDecode
+                console.log('Dados decodificados do token:', decodedToken);
+
+                console.log('Navegando para o menu com estado:', decodedToken);
+                navigate('/menu', { state: decodedToken });
             } else {
-                console.log('Resposta ou r.data está faltando');
-                setTexto('Erro ao realizar login. Verifique os detalhes e tente novamente.');
+                const errorMessage = response.data.message === 'Usuário não encontrado'
+                    ? 'Usuário não encontrado. Verifique seu e-mail e senha.'
+                    : 'Erro ao realizar login. Verifique os detalhes e tente novamente.';
+                setTexto(errorMessage);
                 mostrarModal();
             }
-            
         } catch (error) {
             console.error('Erro ao realizar login:', error);
             setTexto('Erro ao realizar login. Verifique os detalhes e tente novamente.');
@@ -119,7 +116,6 @@ export default function Login() {
                         <div className="loginTexto">
                             <h1>Login</h1>
                             <h2>Bem vindo de Volta!</h2>
-
                         </div>
                         <form onSubmit={enviar}>
                             <label htmlFor="email">E-mail:</label>

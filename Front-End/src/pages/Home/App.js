@@ -43,6 +43,10 @@ export default function Home() {
         listarProduto();
     }, []);
 
+    useEffect(() => {
+        listarProduto();
+    }, []);
+
 
     return (
         <section className="HomeEstilo">

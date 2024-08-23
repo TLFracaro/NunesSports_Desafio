@@ -1,5 +1,21 @@
 import { format } from 'mysql2';
 import { con } from './conection.js';
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = 'cebolinha';
+
+const gerarToken = (user) => {
+    return jwt.sign(
+        {
+            nome: user.nome,
+            cpf: user.cpf,
+            email: user.email,
+            privilegio: user.privilegio,
+        },
+        JWT_SECRET,
+        { expiresIn: '1h' }
+    );
+};
 
 /**
  * Insere um novo usuário no banco de dados.
@@ -339,18 +355,24 @@ export async function logar(email, senha) {
         const [info] = await con.query(comando, [email, senha]);
 
         if (info.length === 1) {
+            const user = info[0];
+            const token = gerarToken(user); 
+
             return {
                 message: 'Login bem-sucedido',
-                nome: info[0].nome,
-                cpf: info[0].cpf,
-                email: info[0].email,
-                privilegio: info[0].privilegio
+                token: token, 
+                nome: user.nome,
+                cpf: user.cpf,
+                email: user.email,
+                privilegio: user.privilegio
             };
         } else {
-            return null;
+            return {
+                message: 'Usuário não encontrado'
+            };
         }
     } catch (error) {
-        console.error('Erro ao logar:', e.message);
+        console.error('Erro ao logar:', error.message);
         throw new Error(`Erro ao logar: ${error.message}`);
     }
 }

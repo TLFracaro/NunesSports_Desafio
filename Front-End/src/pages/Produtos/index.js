@@ -17,6 +17,8 @@ export default function Produtos() {
     const [modalAberto, setModalAberto] = useState(false);
     const [sku, setSku] = useState("")
     const navigate = useNavigate();
+    const location = useLocation();
+    const { nome, cpf, email, privilegio } = location.state || {};
 
     const caixaDeDialogo = useRef(null);
 
@@ -74,7 +76,7 @@ export default function Produtos() {
     async function vizualizarproduto(produto) {
         navigate("/vizualizarprodutos", { state: produto.sku });
     }
-    
+
     async function alterarproduto(produto) {
         navigate("/alterarproduto/", { state: produto.sku });
     }
@@ -99,10 +101,27 @@ export default function Produtos() {
 
     }, [])
 
+    
+
+    useEffect(() => {
+        localStorage.setItem("userData", JSON.stringify({ nome, cpf, email, privilegio }));
+    }, [nome, cpf, email, privilegio]);
+
+    const [storedUserData, setStoredUserData] = useState(null);
+
+    useEffect(() => {
+        const storedUserDataString = localStorage.getItem("userData");
+        if (storedUserDataString) {
+            const parsedUserData = JSON.parse(storedUserDataString);
+            console.log("Dados recuperados:", parsedUserData);
+            setStoredUserData(parsedUserData);
+        }
+    }, []);
+
     return (
         <section className="ProdutoEstilo">
 
-            <Cabecalho2 />
+            <Cabecalho2 privilegio={privilegio} />
 
             <main>
                 <div className="mainConteudo">

@@ -351,6 +351,7 @@ endpoints.post('/login', async (req, resp) => {
             resp.json({
                 success: true,
                 message: 'Login bem-sucedido',
+                token: resultadoLogin.token, 
                 user: resultadoLogin,
             });
         } else {

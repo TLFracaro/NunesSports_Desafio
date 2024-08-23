@@ -12,28 +12,40 @@ import seta from '../../assets/image/seta.svg';
 import tracos from '../../assets/image/tracos.svg';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 import '../../css/global.css';
 
 export default function Cabecalho1() {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
+    const [usuario, setUsuario] = useState(null);
 
-    const handleButtonClick = () => {
+    const clickConta = () => {
         const token = localStorage.getItem('token');
         if (token) {
-            navigate('/menu');
+            try {
+                const decodedToken = jwtDecode(token);
+                console.log('Dados decodificados do token:', decodedToken);
+                setUsuario(decodedToken);
+                setIsOpen(!isOpen);
+                navigate('/menu', { state: decodedToken });
+            } catch (error) {
+                console.error('Erro ao decodificar o token:', error);
+            }
         } else {
             navigate('/login');
         }
     };
 
-    const handleLogout = () => {
-        // Limpa o token do localStorage
+    const sair = (event) => {
+        event.stopPropagation();
         localStorage.removeItem('token');
-        // Redireciona para a página de login
-        navigate('/login');
+        window.location.href = '/';
     };
+
+    const token = localStorage.getItem('token');
+
 
     return (
         <section className='cabecalho1Estilo'>
@@ -51,27 +63,27 @@ export default function Cabecalho1() {
                         </div>
                         <div className="contato">
                             <button>
-                                <img src={balaoMensagem} alt="Balão de contato em arte pixelada" />
+                                <img src={balaoMensagem} alt="Balão de contato" />
                                 <h1>Contato</h1>
                             </button>
                         </div>
 
                         <div className="contaUsuario">
-                            <button onClick={handleButtonClick} style={{ border: 'none', background: 'transparent', cursor: 'pointer' }}>
-                                <img src={pessoaPixel} alt="Pessoa representando o usuário em arte pixelada" />
+                            <button className='minhaConta' onClick={clickConta}>
+                                <img src={pessoaPixel} alt="Pessoa representando o usuário" />
                                 <h1>Minha Conta</h1>
-                                {isOpen && (
-                                    <div className="menuDropdown">
-                                        <button onClick={handleLogout}>Sair</button>
-                                    </div>
-                                )}
                             </button>
+                            {token && (
+                                <div className="menuSair">
+                                    <button onClick={sair}>Sair</button>
+                                </div>
+                            )}
                         </div>
 
                         <div className="carrinho">
                             <button>
                                 <img src={carrinho}
-                                    alt="Carrinho de compra em arte pixelada" />
+                                    alt="Carrinho de compra" />
                                 <h1>Carrinho</h1>
                             </button>
                         </div>

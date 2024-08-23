@@ -121,448 +121,482 @@
                 }
 
                 .contaUsuario {
+                    position: relative;
 
-                    a {
+                    .minhaConta {
+                        position: relative;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
                         text-decoration: none;
+                        border: none;
+                        background-color: transparent;
+                        cursor: pointer;
+                        padding: 0;
 
                         img {
                             width: 30px;
                             height: 30px;
                         }
+                    }
+
+                    .menuSair {
+                        display: block;
+                        opacity: 0;
+                        visibility: hidden;
+                        position: absolute;
+                        top: 125%;
+                        left: 15%;
+                        background-color: #fff;
+                        padding: 5px 25px;
+                        z-index: 1000;
+                        border-radius: 15px;
+                        transition: opacity 0.3s ease, visibility 0.3s ease;
+
+                        button {
+                            width: 100%;
+                            border: none;
+                            padding: 5px 10px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            color: #000;
+                            background-color: #fff;
+                            transition: background-color 0.3s;
+                            border-radius: 4px;
+                        }
+                    }
+
+                    h1 {
+                        color: #fff;
+                        margin-left: 10px;
+                        text-decoration: none;
+                        font-family: K2D Bold;
+                        font-size: 18px;
+                    }
+
+                    .minhaConta:hover+.menuSair,
+                    .menuSair:hover {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            
+
+            .carrinho {
+                button {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                    }
+
+                    h1 {
+                        color: white;
+                        margin-left: 10px;
+                        text-decoration: none;
+                        font-family: K2D Bold;
+                        font-size: 18px;
+                    }
+                }
+
+            }
+        }
+
+        .barraDePesquisaCelular {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            width: 100%;
+            height: 40px;
+            margin-right: 30px;
+            border-radius: 30px;
+            margin-left: 30px;
+            background-color: white;
+
+            input {
+                margin-left: 10px;
+                height: 100%;
+
+                padding: 10px;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                font-family: 'K2D Medium';
+
+                &::placeholder {
+                    font-size: 16px;
+                    font-family: "K2D Bold";
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+
+            button {
+                background-color: transparent;
+                border: none;
+                width: 20px;
+                height: 20px;
+                margin-right: 20px;
+
+                img {
+                    background-color: transparent;
+                    border: none;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}
+
+nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    background-color: #001D3D;
+    z-index: 15;
+
+    .navConteudo {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: row;
+        width: 100%;
+        max-width: 800px;
+        height: 100%;
+
+        .barra {
+            width: 2px;
+
+            svg {
+                width: 2px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+
+        .paginaInicial {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+
+            img {
+                margin-right: 15px;
+            }
+
+            a {
+                text-decoration: none;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-direction: row;
+                color: #fff;
+                font-family: 'K2D Medium';
+                font-size: 20px;
+            }
+        }
+
+        .produto {
+            color: #fff;
+
+            img {
+                margin-right: 15px;
+            }
+
+            a {
+                text-decoration: none;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-direction: row;
+                color: #fff;
+                font-family: 'K2D Medium';
+                font-size: 20px;
+            }
+        }
+
+        .gerenUsuario {
+            a {
+                img {
+                    margin-right: 15px;
+                }
+
+                text-decoration: none;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-direction: row;
+                color: #fff;
+                fill: #fff;
+                font-family: 'K2D Medium';
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    header {
+        height: 100%;
+        min-height: 130px;
+
+        .faixa1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            width: 90%;
+
+            svg {}
+
+            .toolsUsuario {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .logoImg {
+                    width: 150px;
+                    height: auto;
+
+                    a {
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+
+                .barraDePesquisa {
+                    display: none;
+                }
+
+                .contato {
+                    a {
+
+                        img {}
 
                         h1 {
-                            white-space: nowrap;
-                            margin-left: 10px;
-                            color: white;
-                            text-decoration: none;
-                            font-family: K2D Bold;
-                            font-size: 18px;
+                            display: none;
+                        }
+                    }
+                }
+
+                .contaUsuario {
+                    a {
+                        height: 30px;
+                        width: 30px;
+                        margin-right: 0px;
+
+                        img {}
+
+                        h1 {
+                            display: none;
                         }
                     }
                 }
 
                 .carrinho {
                     button {
-                        display: flex;
-                        align-items: center;
-                        text-decoration: none;
-                        background-color: transparent;
-                        border: none;
-                        cursor: pointer;
 
-                        img {
-                            width: 30px;
-                            height: 30px;
-                        }
+                        img {}
 
                         h1 {
-                            color: white;
-                            margin-left: 10px;
-                            text-decoration: none;
-                            font-family: K2D Bold;
-                            font-size: 18px;
+                            display: none;
                         }
                     }
-
                 }
             }
 
             .barraDePesquisaCelular {
-                display: none;
-                align-items: center;
-                justify-content: space-between;
-                flex-wrap: nowrap;
-                width: 100%;
-                height: 40px;
-                margin-right: 30px;
-                border-radius: 30px;
-                margin-left: 30px;
-                background-color: white;
-
-                input {
-                    margin-left: 10px;
-                    height: 100%;
-
-                    padding: 10px;
-                    background-color: transparent;
-                    border: none;
-                    outline: none;
-                    font-family: 'K2D Medium';
-
-                    &::placeholder {
-                        font-size: 16px;
-                        font-family: "K2D Bold";
-                    }
-
-                    &:focus {
-                        outline: none;
-                    }
-                }
-
-
-                button {
-                    background-color: transparent;
-                    border: none;
-                    width: 20px;
-                    height: 20px;
-                    margin-right: 20px;
-
-                    img {
-                        background-color: transparent;
-                        border: none;
-                        width: 20px;
-                        height: 20px;
-                    }
-                }
+                display: flex;
+                flex-wrap: wrap;
             }
         }
     }
 
     nav {
-        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: row;
-        width: 100%;
-        height: 60px;
-        background-color: #E5E5E5;
-        z-index: 15;
+        height: 50px;
 
-        .navConteudo {
+        .navegacaoCategoria {
             display: flex;
             align-items: center;
-            justify-content: space-evenly;
-            flex-direction: row;
-            width: 100%;
-            max-width: 800px;
-            height: 100%;
+            justify-content: flex-start;
+            width: 90%;
 
-            .barra {
-                width: 2px;
-                svg{
-                    width: 2px;
-                    margin-left: 10px;
-                    margin-right: 10px;
+            .maisCategorias {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                width: 90%;
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        height: 16px;
+                        margin-right: 10px;
+                    }
+
+                    background-color: transparent;
+                    border: none;
+                    text-decoration: none;
+                    color: white;
+                    font-size: 12px;
+                    font-family: retroFont;
                 }
             }
 
-            .paginaInicial {
+            .principal {
+                display: none;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 430px) {
+    header {
+        height: 100%;
+        min-height: 130px;
+
+        .faixa1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            width: 90%;
+
+            svg {
+                display: none;
+            }
+
+            .toolsUsuario {
+                width: 100%;
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                color: #898989;
+                justify-content: space-between;
+
+                .logoImg {
+                    width: 150px;
+                    height: auto;
+
+                    a {
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+
+                .barraDePesquisa {
+                    display: none;
+                }
+
+                .contato {
+                    a {
+
+                        img {}
+
+                        h1 {
+                            display: none;
+                        }
+                    }
+                }
+
+                .contaUsuario {
+                    a {
+                        height: 30px;
+                        width: 30px;
+                        margin-right: 0px;
+
+                        img {}
+
+                        h1 {
+                            display: none;
+                        }
+                    }
+                }
+
+                .carrinho {
+                    button {
+
+                        img {}
+
+                        h1 {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .barraDePesquisaCelular {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+    }
+
+    nav {
+
+        .navConteudo {
+
+            svg {}
+
+            .paginaInicial {
 
                 svg {
-                    height: 30px;
-                    fill: #898989;
+                    display: none;
                 }
 
                 a {
-                    text-decoration: none;
-                    display: flex;
-                    justify-content: space-around;
-                    align-items: center;
-                    flex-direction: row;
-                    color: #898989;
-                    font-family: 'K2D Medium';
-                    font-size: 20px;
+                    font-size: 14px;
                 }
             }
 
             .produto {
-                color: #898989;
+
 
                 svg {
-                    height: 30px;
-                    fill: #898989;
+                    display: none;
                 }
 
                 a {
-                    text-decoration: none;
-                    display: flex;
-                    justify-content: space-around;
-                    align-items: center;
-                    flex-direction: row;
-                    color: #898989;
-                    font-family: 'K2D Medium';
-                    font-size: 20px;
+                    font-size: 14px;
                 }
             }
 
             .gerenUsuario {
                 a {
-                svg {
-                    height: 27px;
-                    fill: #898989;
-                }
-                    text-decoration: none;
-                    display: flex;
-                    justify-content: space-around;
-                    align-items: center;
-                    flex-direction: row;
-                    color: #898989;
-                    fill: #898989;
-                    font-family: 'K2D Medium';
-                    font-size: 20px;
-                }
-            }
-        }
-    }
-    @media screen and (max-width: 767px) {
-        header {
-            height: 100%;
-            min-height: 130px;
-    
-            .faixa1 {
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                flex-direction: column;
-                width: 90%;
-    
-                svg {
-                    
-                }
-    
-                .toolsUsuario {
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-    
-                    .logoImg {
-                        width: 150px;
-                        height: auto;
-    
-                        a {
-                            img {
-                                width: 100%;
-                                height: auto;
-                            }
-                        }
-                    }
-    
-                    .barraDePesquisa {
-                        display: none;
-                    }
-    
-                    .contato {
-                        a {
-    
-                            img {}
-    
-                            h1 {
-                                display: none;
-                            }
-                        }
-                    }
-    
-                    .contaUsuario {
-                        a {
-                            height: 30px;
-                            width: 30px;
-                            margin-right: 0px;
-    
-                            img {}
-    
-                            h1 {
-                                display: none;
-                            }
-                        }
-                    }
-    
-                    .carrinho {
-                        button {
-    
-                            img {}
-    
-                            h1 {
-                                display: none;
-                            }
-                        }
-                    }
-                }
-    
-                .barraDePesquisaCelular {
-                    display: flex;
-                    flex-wrap: wrap;
-                }
-            }
-        }
-    
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 50px;
-    
-            .navegacaoCategoria {
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                width: 90%;
-    
-                .maisCategorias {
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                    width: 90%;
-    
-                    button {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-    
-                        img {
-                            height: 16px;
-                            margin-right: 10px;
-                        }
-    
-                        background-color: transparent;
-                        border: none;
-                        text-decoration: none;
-                        color: white;
-                        font-size: 12px;
-                        font-family: retroFont;
-                    }
-                }
-    
-                .principal {
-                    display: none;
-                }
-            }
-        }
-    }
-    
-    
-    @media screen and (max-width: 430px) {
-        header {
-            height: 100%;
-            min-height: 130px;
-    
-            .faixa1 {
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                flex-direction: column;
-                width: 90%;
-    
-                svg {
-                    display: none;
-                }
-    
-                .toolsUsuario {
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-    
-                    .logoImg {
-                        width: 150px;
-                        height: auto;
-    
-                        a {
-                            img {
-                                width: 100%;
-                                height: auto;
-                            }
-                        }
-                    }
-    
-                    .barraDePesquisa {
-                        display: none;
-                    }
-    
-                    .contato {
-                        a {
-    
-                            img {}
-    
-                            h1 {
-                                display: none;
-                            }
-                        }
-                    }
-    
-                    .contaUsuario {
-                        a {
-                            height: 30px;
-                            width: 30px;
-                            margin-right: 0px;
-    
-                            img {}
-    
-                            h1 {
-                                display: none;
-                            }
-                        }
-                    }
-    
-                    .carrinho {
-                        button {
-    
-                            img {}
-    
-                            h1 {
-                                display: none;
-                            }
-                        }
-                    }
-                }
-    
-                .barraDePesquisaCelular {
-                    display: flex;
-                    flex-wrap: wrap;
-                }
-            }
-        }
-    
-        nav {
-    
-            .navConteudo {
-    
-                svg {
-                    
-                }
-    
-                .paginaInicial {
-                    
-                    svg {
-                        display: none;
-                    }
-    
-                    a {
-                        font-size: 14px;
-                    }
-                }
-    
-                .produto {
-                    
-    
-                    svg {
-                        display: none;
-                    }
-    
-                    a {
-                        font-size: 14px; 
-                    }
-                }
-    
-                .gerenUsuario {
-                    a {
-                        font-size: 14px;
-                    svg {
-                        display: none;
-                    }
-                        
-                    }
-                }
-            }
-        }
-    }    
-}
+                    font-size: 14px;
 
+                    svg {
+                        display: none;
+                    }
+
+                }
+            }
+        }
+    }
+}
+}
