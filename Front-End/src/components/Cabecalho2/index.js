@@ -17,16 +17,16 @@ import { jwtDecode } from 'jwt-decode';
 
 import '../../css/global.css';
 
-export default function Cabecalho2({privilegio}) {
+export default function Cabecalho2() {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState(null);
+    const token = localStorage.getItem('token');
+    const decodedToken = jwtDecode(token);
 
     const clickConta = () => {
-        const token = localStorage.getItem('token');
         if (token) {
             try {
-                const decodedToken = jwtDecode(token);
                 console.log('Dados decodificados do token:', decodedToken);
                 setUsuario(decodedToken);
                 setIsOpen(!isOpen);
@@ -45,10 +45,8 @@ export default function Cabecalho2({privilegio}) {
         window.location.href = '/';
     };
 
-    const token = localStorage.getItem('token');
-
-    const isAdmin = privilegio === 'ADMIN';
-    console.log(privilegio);
+    const isAdmin = decodedToken.privilegio === 'ADMIN';
+    console.log(decodedToken.privilegio);
 
     return (
         <section className='cabecalho2Estilos'>
