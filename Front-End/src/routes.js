@@ -10,6 +10,7 @@ import Produtos from "./pages/Produtos/index.js";
 import VizualizarProdutos from "./pages/VizualizarProdutos/index.js";
 import Login from './pages/Login/index.js';
 import Alterar from './pages/AlterarProduto/index.js';
+import Vizualizar from './pages/VizualizacaoCliente/index.js';
 
 const isAuthenticated = () => {
     const token = localStorage.getItem('token');
@@ -47,6 +48,7 @@ export default function Rotas() {
                 <Route path="/produtos" element={<AdminRoute element={<Produtos />} />} />
                 <Route path="/vizualizarprodutos" element={<AdminRoute element={<VizualizarProdutos />} />} />
                 <Route path="/alterarproduto" element={<AdminRoute element={<Alterar />} />} />
+                <Route path='/vizualizar' element={<Vizualizar />} />
             </Routes>
         </BrowserRouter>
     );

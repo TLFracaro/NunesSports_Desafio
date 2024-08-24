@@ -66,8 +66,6 @@
                     align-self: flex-start;
                     max-width: 430px;
 
-
-
                     .infosUser {
                         align-self: flex-start;
                         justify-self: flex-start;
@@ -134,6 +132,8 @@
                 .opcos {
                     display: flex;
                     flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-start;
                     flex-wrap: wrap;
                     position: relative;
                     background-color: white;
@@ -141,9 +141,12 @@
                     border-radius: 50px;
                     width: 100%;
                     height: 100%;
+                    min-height: 649px;
                     border: #E5E5E5 double 20px;
 
                     h3 {
+                        align-self: flex-start;
+                        justify-self: flex-start;
                         font-size: 32px;
                         margin-bottom: 5px;
                         margin-left: 20px;
@@ -156,9 +159,7 @@
                         flex-direction: column;
                         justify-content: space-between;
                         position: relative;
-                        height: 100%;
-                        max-height: 520px;
-
+                        width: 100%;
                         .quadrado1 {
                             display: flex;
                             align-items: center;

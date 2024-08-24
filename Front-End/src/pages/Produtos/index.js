@@ -19,11 +19,9 @@ export default function Produtos() {
     const navigate = useNavigate();
     const location = useLocation();
     const { nome, cpf, email, privilegio } = location.state || {};
-
-    const caixaDeDialogo = useRef(null);
-
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [produtoToDelete, setProdutoToDelete] = useState(null);
+    const caixaDeDialogo = useRef(null);
 
     useEffect(() => {
         caixaDeDialogo.current = document.getElementById("CaixaDeDialogo");
@@ -41,12 +39,6 @@ export default function Produtos() {
         setShowConfirmation(false);
     };
 
-    const closeAndResetConfirmation = () => {
-        closeConfirmation();
-        setProdutoToDelete(null);
-    };
-
-
     const fecharModal = () => {
         if (caixaDeDialogo.current) {
             caixaDeDialogo.current.close();
@@ -58,6 +50,7 @@ export default function Produtos() {
             caixaDeDialogo.current.showModal();
         }
     };
+
 
     async function excluirProduto() {
         if (produtoToDelete) {
@@ -136,7 +129,7 @@ export default function Produtos() {
                         <div className="backDrop"></div>
                     </dialog>
                     <div className="titulo">
-                        <h1>Produtos</h1>
+                        <h1>• Produtos:</h1>
                     </div>
                     <div className="buscaEcadastro">
                         <div className="pesquisa">
@@ -216,6 +209,7 @@ export default function Produtos() {
                                 ))}
                             </table>
                         )}
+                        <p>{`Total de itens: ${produtos.length}`}</p>
                     </div>
                     <div className='tabeleMobile'>
                         {filtrarProdutos().length === 0 ? (
@@ -262,6 +256,7 @@ export default function Produtos() {
                                 ))}
                             </table>
                         )}
+                        <p>{`Total de itens: ${produtos.length}`}</p>
                     </div>
                 </div>
             </main>

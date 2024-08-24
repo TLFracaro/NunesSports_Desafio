@@ -1,24 +1,32 @@
 import "./index.scss";
-import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import gatoToca from '../../assets/image/gatoToca.jpg';
 import Cabecalho2 from "../../components/Cabecalho2";
 import sairIcon from "../../assets/image/sair.svg";
 import seta from "../../assets/image/setaMenu.svg";
+import { jwtDecode } from 'jwt-decode';
 
 import '../../css/global.css';
 import Rodape from "../../components/Rodape";
 
 export default function Menu() {
-    const location = useLocation();
-    const { nome, cpf, email, privilegio } = location.state || {};
     const [dadosUsuarios, setStoredUserData] = useState(null);
-    const dados = localStorage.getItem("userData");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        localStorage.setItem("userData", JSON.stringify({ nome, cpf, email, privilegio }));
-    }, [nome, cpf, email, privilegio]);
-
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const decodedToken = jwtDecode(token);
+                console.log('Dados decodificados do token:', decodedToken);
+                setStoredUserData(decodedToken);
+            } catch (error) {
+                console.error('Erro ao decodificar o token:', error);
+            }
+        }
+        setLoading(false);
+    }, []);
 
     const sair = (event) => {
         event.stopPropagation();
@@ -26,19 +34,12 @@ export default function Menu() {
         window.location.href = '/';
     };
 
-    useEffect(() => {
-        if (dados) {
-            const parsedUserData = JSON.parse(dados);
-            console.log("Dados recuperados:", parsedUserData);
-            setStoredUserData(parsedUserData);
-        }
-    }, []);
-
-    console.log(dadosUsuarios);
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <section className="MenuEstilo">
-
             <Cabecalho2 />
 
             <main>
@@ -47,16 +48,15 @@ export default function Menu() {
                         <h1>• Pagina inicial:</h1>
                     </div>
                     <div className="conteudo">
-
                         <div className="dados">
                             <div className="infosUser">
-                                <img src={gatoToca} alt="Sua imamgem"></img>
+                                <img src={gatoToca} alt="Sua imagem"></img>
                                 <h3>Dados Usuario:</h3>
-                                <p><strong>Nome:</strong> {dados.nome}</p>
-                                <p><strong>CPF:</strong> {cpf}</p>
-                                <p><strong>E-mail:</strong> {email}</p>
+                                <p><strong>Nome:</strong> {dadosUsuarios?.nome}</p>
+                                <p><strong>CPF:</strong> {dadosUsuarios?.cpf}</p>
+                                <p><strong>E-mail:</strong> {dadosUsuarios?.email}</p>
                             </div>
-                            <button onClick={sair}><img src={sairIcon} />Sair</button>
+                            <button onClick={sair}><img src={sairIcon} alt="Sair" />Sair</button>
                         </div>
                         <div className="opcos">
                             <h3>Ferramentas:</h3>

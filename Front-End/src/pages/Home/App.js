@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import axios from "axios";
 import cartaz1 from '../../assets/image/cartaz1.svg';
 import cartaz2 from '../../assets/image/cartaz2.svg';
@@ -39,6 +40,8 @@ export default function Home() {
         }
     }
 
+
+
     useEffect(() => {
         listarProduto();
     }, []);
@@ -77,6 +80,7 @@ export default function Home() {
                             produtos.map(produto => (
                                 <Produto
                                     key={produto.sku}
+                                    produto={produto}
                                     imgURL={produto.imagem_base64}
                                     nome={produto.nome}
                                     preco={`R$ ${produto.preco}`}
