@@ -43,7 +43,7 @@ export default function GerenciamentoUsuario() {
                 cpf,
                 email,
                 senha,
-                privilegio: privilegio === 'normal' ? 'adm' : 'normal'
+                privilegio: privilegio === 'normal' ? 'ADMIN' : 'normal'
             };
             await api.put(`/usuario/${cpf}`, body);
             setTexto(`A permissão do usuário ${nome} foi alterada!`);
