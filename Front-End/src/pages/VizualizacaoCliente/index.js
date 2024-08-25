@@ -1,7 +1,8 @@
 import Cabecalho1 from "../../components/Cabecalho1";
 import "./index.scss";
 import { Link, useLocation } from "react-router-dom";
-
+import carrinho from "../../assets/image/carrinho.svg";
+import cincoEstrelas from "../../assets/image/cincoEstrelas.svg";
 import '../../css/global.css';
 import Rodape from "../../components/Rodape";
 import api from "../../api";
@@ -100,15 +101,13 @@ export default function VizualizarProdutos() {
 
                         <div className="infos">
                             <h4 id="nomeProd">{produto.item?.nome}</h4>
+                            <p className="avaliacao"><img className="estrelas" src={cincoEstrelas}/>5.0</p>
                             <h4 id="precoProd">R$ {produto.item?.preco}</h4>
                             <h4>Categoria:⠀<p>{produto.item?.categoria}</p></h4>
                             <h4>Marca:⠀<p>{produto.item?.marca}</p></h4>
-                            <h4>Descrição do produto:⠀<p>{produto.item?.descricao}</p></h4>
-                            <h4>SKU:⠀<p>{produto.item?.sku}</p></h4>
-                            <h4>Localização no estoque:⠀<p>{produto.item?.loc_estoque}</p></h4>
-                            <h4>Data de inclusão:⠀<p>{dataFormatada}</p></h4>
+                            <h4 id="descricaoProd">Descrição do produto:⠀<p>{produto.item?.descricao}</p></h4>
+
                             <div className="variacoes">
-                                <h4>Variações:</h4>
                                 <table>
                                     <tr>
                                         <th>Tamanho</th>
@@ -123,6 +122,12 @@ export default function VizualizarProdutos() {
                                         </tr>
                                     ))}
                                 </table>
+                            </div>
+                            <div className="buttonGroup">
+                                <button className="buttonCarrinho">
+                                    Adicionar ao Carrinho<img id='carrinhoImg' src={carrinho} alt="Carrinho" />
+                                </button>
+                                <button className="buttonCompra">Comprar Agora</button>
                             </div>
                         </div>
                     </div>

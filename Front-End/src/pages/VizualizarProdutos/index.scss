@@ -30,7 +30,8 @@
                 display: flex;
                 align-self: flex-start;
                 justify-content: center;
-
+                margin: 20px;
+                margin-bottom: 0px;
                 a {
                     color: #000;
                     background-color: #fff;
@@ -75,12 +76,12 @@
                 border: #E5E5E5 double 20px;
                 background-color: white;
 
-                .carrossel {
+                .carrosselProd {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     position: relative;
-                    width: 45%;
+                    width: 50%;
                   
                     .imagemAtual {
                       width: 100%;
@@ -121,11 +122,12 @@
 
 
 
-                .infos {
+                .infosProd {
                     width: 50%;
                     background-color: #E5E5E5;
                     padding: 40px;
                     border-radius: 50px;
+                    margin: 20px;
                     h4 {
                         display: flex;
 
@@ -145,6 +147,14 @@
                     #precoProd{
                         
                         font-size: 20px;
+                    }
+
+                    #descricaoProd{
+                        display: flex;
+                        flex-direction: column;
+                        p{
+                            margin-top: 10px;
+                        }
                     }
 
                     .variacoes {

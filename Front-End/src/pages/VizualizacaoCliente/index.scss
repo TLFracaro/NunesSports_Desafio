@@ -21,58 +21,32 @@
             border-radius: 50px;
             width: 100%;
             max-width: 1380px;
-            background-color: #E5E5E5;
-            padding: 30px;
-            border: #fff double 25px;
+            background-color: #fff;
+            padding: 0px;
+            border: #E5E5E5 double 25px;
             flex-wrap: wrap;
 
-            .voltar {
-                display: flex;
-                align-self: flex-start;
-                justify-content: center;
-
-                a {
-                    color: #000;
-                    background-color: #fff;
-                    padding: 10px 20px;
-                    border-radius: 50px;
-                    text-decoration: none;
-                    font-size: 12px;
-                    font-family: 'K2D Extra Bold';
-                    text-align: left;
-                    h1 {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-
-                    svg {
-                        margin-right: 5px;
-                        width: 30px;
-                        height: 32px;
-                    }
-                }
-            }
+            
 
             #titulo {
                 font-family: 'K2D Bold';
                 align-self: flex-start;
                 margin-left: 50px;
-                margin-top: 20px;
+                margin-top: 0px;
                 margin-bottom: 20px;
                 font-family: 'K2D Extra Bold';
                 font-size: 32px;
             }
 
             .conteudo {
-                padding: 20px;
                 display: flex;
-                justify-content: space-around;
+                justify-content: space-between;
                 align-items: center;
                 height: 100%;
                 width: 100%;
+                border: none;
+                padding: 0px;
                 border-radius: 50px;
-                border: #E5E5E5 double 20px;
                 background-color: white;
 
                 .carrossel {
@@ -81,7 +55,7 @@
                     justify-content: center;
                     position: relative;
                     width: 45%;
-                  
+                    margin: 15px;
                     .imagemAtual {
                       width: 100%;
                       max-width: 400px;
@@ -123,9 +97,13 @@
 
                 .infos {
                     width: 50%;
+                    height: 100%;
                     background-color: #E5E5E5;
-                    padding: 40px;
-                    border-radius: 50px;
+                    border-top-right-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    border-top-left-radius: 0px;
+                    border-bottom-left-radius: 0px;
+                    padding: 30px 50px;
                     h4 {
                         display: flex;
 
@@ -138,6 +116,18 @@
                         }
                     }
 
+                    .avaliacao{
+                        display: flex;
+                        align-items: center;
+                        font-family: "K2D Extra Bold";
+                        margin-bottom: 20px;
+                        .estrelas{
+                            height: 15px;
+                            margin-right: 5px;
+                            
+                        }
+                    }
+
                     #nomeProd{
                         font-size: 42px;
                         margin-bottom: 0px;
@@ -147,7 +137,69 @@
                         font-size: 20px;
                     }
 
+                    #descricaoProd{
+                        display: flex;
+                        flex-direction: column;
+                        p{
+                            margin-top: 10px;
+                        }
+                    }
+
+                    .buttonGroup{
+                        margin-top: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .buttonCompra{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            width: 40%;
+                            height: 50px;
+                            background-color: #B70000;
+                            border: none;
+                            border-radius: 20px;
+                            color: #fff;
+                            font-family: "K2D Extra Bold";
+                            font-size: 14px;
+                            &:hover {
+                                transition: 0.3s linear;
+                                background-color: #00ff00;
+                                border: #00ff00;
+                            }
+                        }
+                        .buttonCarrinho {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            width: 55%;
+                            height: 50px;
+                            background-color: #B70000;
+                            border: none;
+                            border-radius: 20px;
+                            color: #fff;
+                            font-family: "K2D Extra Bold";
+                            font-size: 14px;
+            
+                             #carrinhoImg {
+                                 border-radius: 0px;
+                                 width: 25px;
+                                 height: 25px;
+                                 margin-left: 10px;
+                             }
+            
+                             &:hover {
+                                 transition: 0.3s linear;
+                                 background-color: #00ff00;
+                                 border: #00ff00;
+                             }
+                         }
+                    }
+
                     .variacoes {
+                        margin-top: 20px;
                         h4 {
                             margin-bottom: 0px;
                         }
