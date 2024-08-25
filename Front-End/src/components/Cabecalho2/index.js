@@ -1,7 +1,14 @@
+/*Import Estilo*/
 import './index.scss';
+import '../../css/global.css';
 
+/*Import Bibliotecas*/
 import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
+/*Import Imagens*/
 import balaoMensagem from '../../assets/image/balaoMensagem.svg';
 import carrinho from '../../assets/image/carrinho.svg';
 import produtos from '../../assets/image/produtos.svg';
@@ -11,11 +18,7 @@ import lupa from '../../assets/image/lupa.svg';
 import pessoaPixel from '../../assets/image/pessoaPixel.svg';
 import gerente from '../../assets/image/gerente.svg';
 import tracos from '../../assets/image/tracos.svg';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
 
-import '../../css/global.css';
 
 export default function Cabecalho2() {
     const [isOpen, setIsOpen] = useState(false);
@@ -99,7 +102,6 @@ export default function Cabecalho2() {
             <nav>
                 <div className="navConteudo">
                     <div className="paginaInicial">
-
                         <Link to="/menu"><img src={home}/>
                             Pagina incial</Link>
                     </div>

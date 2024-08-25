@@ -1,11 +1,16 @@
-//alterei aqui
+/*Import Estilo*/
 import "./index.scss";
+import '../../css/global.css';
+
+/*Import Bibliotecas*/
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+
+/*Import Componentes*/
 import Cabecalho2 from "../../components/Cabecalho2";
-import axios from 'axios';
-import '../../css/global.css';
 import Rodape from "../../components/Rodape";
+
+/*Import Requisição API*/
 import api from "../../api";
 
 export default function CadastroDeProdutos() {
@@ -147,8 +152,6 @@ export default function CadastroDeProdutos() {
             reader.readAsDataURL(file);
         }
     }
-
-
 
     function deleteImage(index) {
         const newImages = [...images];

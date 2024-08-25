@@ -42,3 +42,4 @@ CREATE TABLE imagens (
 select * from variacao;
 select * from item;	
 select * from imagens;	
+select * from usuario;	

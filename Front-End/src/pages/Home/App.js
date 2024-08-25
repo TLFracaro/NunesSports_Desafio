@@ -1,15 +1,22 @@
+/*Import Estilo*/
+import './App.scss';
+import '../../css/global.css';
+
+/*Import Bibliotecas*/
 import React, { useState, useEffect } from "react";
 
-import axios from "axios";
+/*Import Imagens*/
 import cartaz1 from '../../assets/image/cartaz1.svg';
 import cartaz2 from '../../assets/image/cartaz2.svg';
 import cartaz3 from '../../assets/image/cartaz3.svg';
 import estrela from '../../assets/image/estrela.svg';
+
+/*Import Componentes*/
 import Cabecalho1 from "../../components/Cabecalho1";
 import Rodape from "../../components/Rodape";
 import Produto from "../../components/Produto";
-import '../../css/global.css';
-import './App.scss';
+
+/*Import Requisição API*/
 import api from "../../api";
 
 const imagens = [cartaz1, cartaz2, cartaz3];
@@ -40,8 +47,6 @@ export default function Home() {
         }
     }
 
-
-
     useEffect(() => {
         listarProduto();
     }, []);
@@ -49,7 +54,6 @@ export default function Home() {
     useEffect(() => {
         listarProduto();
     }, []);
-
 
     return (
         <section className="HomeEstilo">

@@ -1,13 +1,19 @@
-//alterei aqui
+/*Import Estilo*/
 import "./index.scss";
-import { Link, useNavigate } from "react-router-dom";
-import lupa from '../../assets/image/lupa.svg';
-import Cabecalho2 from "../../components/Cabecalho2";
-import { useLocation } from 'react-router-dom';
 import '../../css/global.css';
-import Rodape from "../../components/Rodape";
-import axios from "axios";
+
+/*Import Bibliotecas*/
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+
+/*Import Componentes*/
+import Cabecalho2 from "../../components/Cabecalho2";
+import Rodape from "../../components/Rodape";
+
+/*Import Imagens*/
+import lupa from '../../assets/image/lupa.svg';
+
+/*Import Requisição API*/
 import api from "../../api";
 
 export default function Produtos() {
@@ -15,7 +21,6 @@ export default function Produtos() {
     const [termoPesquisa, setTermoPesquisa] = useState('');
     const [texto, setTexto] = useState('');
     const [modalAberto, setModalAberto] = useState(false);
-    const [sku, setSku] = useState("")
     const navigate = useNavigate();
     const location = useLocation();
     const { nome, cpf, email, privilegio } = location.state || {};
@@ -93,8 +98,6 @@ export default function Produtos() {
         listarProduto();
 
     }, [])
-
-    
 
     useEffect(() => {
         localStorage.setItem("userData", JSON.stringify({ nome, cpf, email, privilegio }));

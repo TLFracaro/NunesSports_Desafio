@@ -2,7 +2,21 @@ import { format } from 'mysql2';
 import { con } from './conection.js';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = 'cebolinha';
+const JWT_SECRET = process.env.TOKEN;
+
+/**
+ * Gera um token JWT (JSON Web Token) para um usuário.
+ *
+ * @param {Object} user - Objeto representando o usuário para o qual o token será gerado.
+ * @param {string} user.nome - Nome do usuário.
+ * @param {string} user.cpf - CPF do usuário.
+ * @param {string} user.email - Email do usuário.
+ * @param {string} user.privilegio - Privilégio do usuário (ex: ADMIN, USER).
+ * 
+ * @returns {string} - O token JWT gerado.
+ *
+ * @throws {Error} - Lança um erro se a geração do token falhar.
+ */
 
 const gerarToken = (user) => {
     return jwt.sign(
@@ -377,6 +391,25 @@ export async function logar(email, senha) {
     }
 }
 
+/**
+ * Lista itens para a tela inicial, incluindo SKU, nome, preço e a imagem associada.
+ *
+ * Esta função executa uma consulta SQL para recuperar informações de itens da tabela `item`
+ * e a imagem associada de itens da tabela `imagens`. Ela retorna uma lista de produtos 
+ * com suas respectivas informações e a imagem em formato base64.
+ *
+ * @async
+ * @function listarItensHome
+ * 
+ * @returns {Promise<Object[]>} - Uma promessa que resolve para uma lista de objetos, 
+ *                                onde cada objeto representa um item com as propriedades:
+ *                                - `sku` (string): SKU do item.
+ *                                - `nome` (string): Nome do item.
+ *                                - `preco` (number): Preço do item.
+ *                                - `imagem_base64` (string): Imagem do item em formato base64.
+ * 
+ * @throws {Error} - Lança um erro se a consulta ao banco de dados falhar.
+ */
 export async function listarItensHome() {
     try {
         const query = `

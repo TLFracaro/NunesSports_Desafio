@@ -1,11 +1,16 @@
-//alterei aqui
+/*Import Estilo*/
 import "./index.scss";
+import '../../css/global.css';
+
+/*Import Bibliotecas*/
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useLocation } from "react-router-dom";
+
+/*Import Componentes*/
 import Cabecalho2 from "../../components/Cabecalho2";
-import axios from 'axios';
-import '../../css/global.css';
 import Rodape from "../../components/Rodape";
+
+/*Import Requisição API*/
 import api from "../../api";
 
 export default function AlterarProduto() {
@@ -132,8 +137,8 @@ export default function AlterarProduto() {
                     formData.append(`imagens[${index}]`, image.imagem_base64);
                 }
             });
-            
-            console.log("Depois do console.log('Passei aqui')");            
+
+            console.log("Depois do console.log('Passei aqui')");
 
             const resposta = await api.put(`/produto/${skuRecebido}`, formData, {
                 headers: {
@@ -178,7 +183,7 @@ export default function AlterarProduto() {
             reader.onload = (e) => {
                 console.log('URL da imagem adicionada:', e.target.result);
                 setImages((prevImages) => [...prevImages, { imagem_base64: e.target.result }]);
-            };            
+            };
             reader.readAsDataURL(file);
         }
     }
@@ -188,8 +193,8 @@ export default function AlterarProduto() {
         const newImages = [...images];
         newImages.splice(index, 1);
         setImages(newImages);
-    }    
-    
+    }
+
     function addVariacao() {
         setVariacoes([...variacoes, { tamanho: '', cor: '', quantidade: '' }]);
     }

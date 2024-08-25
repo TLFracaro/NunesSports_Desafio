@@ -1,12 +1,21 @@
-import Cabecalho1 from "../../components/Cabecalho1";
+/*Import Estilo*/
 import "./index.scss";
-import { Link, useLocation } from "react-router-dom";
+import '../../css/global.css';
+
+/*Import Bibliotecas*/
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+/*Import Componentes*/
+import Cabecalho1 from "../../components/Cabecalho1";
+import Rodape from "../../components/Rodape";
+
+/*Import Imagens*/
 import carrinho from "../../assets/image/carrinho.svg";
 import cincoEstrelas from "../../assets/image/cincoEstrelas.svg";
-import '../../css/global.css';
-import Rodape from "../../components/Rodape";
+
+/*Import Requisição API*/
 import api from "../../api";
-import { useEffect, useState } from "react";
 
 export default function VizualizarProdutos() {
     const location = useLocation();
@@ -26,7 +35,6 @@ export default function VizualizarProdutos() {
             prevIndex === imagensBase64.length - 1 ? 0 : prevIndex + 1
         );
     };
-
 
     useEffect(() => {
         async function fetchData() {
@@ -48,29 +56,6 @@ export default function VizualizarProdutos() {
         }
         fetchData();
     }, [sku]);
-
-    const calcularGrid = () => {
-        const numeroDeImagens = imagensBase64.length;
-        const colunas = numeroDeImagens === 4 ? 2 : 1;
-        const linhas = Math.ceil(numeroDeImagens / colunas);
-
-        return {
-            gridTemplateColumns: `repeat(${colunas}, 1fr)`,
-            gridTemplateRows: `repeat(${linhas}, 1fr)`,
-        };
-    };
-
-    const dataDeInclusao = new Date(produto.item?.dataDeInclusao);
-
-    const addZero = (num) => (num < 10 ? `0${num}` : num);
-
-    const dia = addZero(dataDeInclusao.getDate());
-    const mes = addZero(dataDeInclusao.getMonth() + 1);
-    const ano = dataDeInclusao.getFullYear();
-    const horas = addZero(dataDeInclusao.getHours());
-    const minutos = addZero(dataDeInclusao.getMinutes());
-
-    const dataFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
 
     return (
         <section className="VizualizarProdutoEstilo">

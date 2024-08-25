@@ -1,11 +1,17 @@
-import Cabecalho2 from "../../components/Cabecalho2";
+/*Import Estilo*/
 import "./index.scss";
-import { Link, useLocation } from "react-router-dom";
-
 import '../../css/global.css';
-import Rodape from "../../components/Rodape";
-import api from "../../api";
+
+/*Import Bibliotecas*/
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+
+/*Import Componentes*/
+import Cabecalho2 from "../../components/Cabecalho2";
+import Rodape from "../../components/Rodape";
+
+/*Import Requisição API*/
+import api from "../../api";
 
 export default function VizualizarProdutos() {
     const location = useLocation();
@@ -47,17 +53,6 @@ export default function VizualizarProdutos() {
         }
         fetchData();
     }, [sku]);
-
-    const calcularGrid = () => {
-        const numeroDeImagens = imagensBase64.length;
-        const colunas = numeroDeImagens === 4 ? 2 : 1;
-        const linhas = Math.ceil(numeroDeImagens / colunas);
-
-        return {
-            gridTemplateColumns: `repeat(${colunas}, 1fr)`,
-            gridTemplateRows: `repeat(${linhas}, 1fr)`,
-        };
-    };
 
     const dataDeInclusao = new Date(produto.item?.dataDeInclusao);
 

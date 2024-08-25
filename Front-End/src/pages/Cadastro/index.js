@@ -1,13 +1,17 @@
+/*Import Estilo*/
 import './index.scss';
+import '../../css/global.css';
 
-import linhaLogin from '../../assets/image/linhaLogin.svg';
+/*Import Bibliotecas*/
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useRef, useState, } from 'react';
+import { Link } from 'react-router-dom';
+
+/*Import Componentes*/
 import Cabecalho1 from '../../components/Cabecalho1';
 import Rodape from '../../components/Rodape';
-import { useNavigate } from 'react-router-dom'
-import '../../css/global.css';
-import { useEffect, useRef, useState, } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+
+/*Import Requisição API*/
 import api from '../../api';
 
 
@@ -107,8 +111,6 @@ export default function Cadastro() {
             }
         }
     };
-
-
 
     const formatarCpf = (value) => {
         return value.replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4').substr(0, 14);

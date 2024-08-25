@@ -140,6 +140,16 @@
                             width: 30px;
                             height: 30px;
                         }
+
+                        h1 {
+                            display: flex;
+                            color: #fff;
+                            margin-left: 10px;
+                            text-decoration: none;
+                            font-family: 'K2D Bold';
+                            font-size: 18px;
+                            white-space: nowrap;
+                        }
                     }
 
                     .menuSair {
@@ -168,13 +178,7 @@
                         }
                     }
 
-                    h1 {
-                        color: #fff;
-                        margin-left: 10px;
-                        text-decoration: none;
-                        font-family: K2D Bold;
-                        font-size: 18px;
-                    }
+
 
                     .minhaConta:hover+.menuSair,
                     .menuSair:hover {
@@ -327,8 +331,8 @@ nav {
         .faixa1 {
             display: flex;
             align-items: center;
-            justify-content: space-around;
-            flex-direction: column;
+            justify-content: space-evenly;
+            flex-direction: column !important;
             width: 90%;
 
             svg {}
@@ -337,7 +341,7 @@ nav {
                 width: 100%;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: space-evenly !important;
 
                 .logoImg {
                     width: 150px;
@@ -352,7 +356,7 @@ nav {
                 }
 
                 .barraDePesquisa {
-                    display: none;
+                    display: none !important;
                 }
 
                 .contato {
@@ -367,15 +371,12 @@ nav {
                 }
 
                 .contaUsuario {
-                    a {
+                    .minhaConta {
                         height: 30px;
                         width: 30px;
                         margin-right: 0px;
-
-                        img {}
-
                         h1 {
-                            display: none;
+                            display: none !important;
                         }
                     }
                 }
@@ -394,7 +395,8 @@ nav {
 
             .barraDePesquisaCelular {
                 display: flex;
-                flex-wrap: wrap;
+                
+                flex-wrap: wrap !important;
             }
         }
     }
@@ -453,7 +455,7 @@ nav {
             display: flex;
             align-items: center;
             justify-content: space-around;
-            flex-direction: column;
+            flex-direction: column !important;
             width: 90%;
 
             svg {
@@ -479,7 +481,7 @@ nav {
                 }
 
                 .barraDePesquisa {
-                    display: none;
+                    display: none !important;
                 }
 
                 .contato {
@@ -494,7 +496,7 @@ nav {
                 }
 
                 .contaUsuario {
-                    a {
+                    .minhaConta {
                         height: 30px;
                         width: 30px;
                         margin-right: 0px;
@@ -521,7 +523,6 @@ nav {
 
             .barraDePesquisaCelular {
                 display: flex;
-                flex-wrap: wrap;
             }
         }
     }

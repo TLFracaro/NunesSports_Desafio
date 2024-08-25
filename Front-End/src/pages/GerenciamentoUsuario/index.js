@@ -1,9 +1,18 @@
+/*Import Estilo*/
 import "./index.scss";
-import Cabecalho2 from "../../components/Cabecalho2";
 import '../../css/global.css';
-import Rodape from "../../components/Rodape";
-import lupa from '../../assets/image/lupa.svg';
+
+/*Import Bibliotecas*/
 import { useEffect, useState } from "react";
+
+/*Import Componentes*/
+import Cabecalho2 from "../../components/Cabecalho2";
+import Rodape from "../../components/Rodape";
+
+/*Import Imagens*/
+import lupa from '../../assets/image/lupa.svg';
+
+/*Import Requisição API*/
 import api from "../../api";
 
 export default function GerenciamentoUsuario() {

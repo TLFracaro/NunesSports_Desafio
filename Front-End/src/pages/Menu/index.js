@@ -1,14 +1,19 @@
+/*Import Estilo*/
 import "./index.scss";
+import '../../css/global.css';
+
+/*Import Bibliotecas*/
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+
+/*Import Componentes*/
+import Rodape from "../../components/Rodape";
+
+/*Import Imagens*/
 import gatoToca from '../../assets/image/gatoToca.jpg';
 import Cabecalho2 from "../../components/Cabecalho2";
 import sairIcon from "../../assets/image/sair.svg";
 import seta from "../../assets/image/setaMenu.svg";
-import { jwtDecode } from 'jwt-decode';
-
-import '../../css/global.css';
-import Rodape from "../../components/Rodape";
 
 export default function Menu() {
     const [dadosUsuarios, setStoredUserData] = useState(null);

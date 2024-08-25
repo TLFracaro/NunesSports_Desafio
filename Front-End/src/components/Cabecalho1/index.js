@@ -1,7 +1,14 @@
+/*Import Estilo*/
 import './index.scss';
+import '../../css/global.css';
 
+/*Import Bibliotecas*/
 import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
+/*Import Imagens*/
 import balaoMensagem from '../../assets/image/balaoMensagem.svg';
 import carrinho from '../../assets/image/carrinho.svg';
 import categoria from '../../assets/image/categoria.svg';
@@ -10,11 +17,7 @@ import lupa from '../../assets/image/lupa.svg';
 import pessoaPixel from '../../assets/image/pessoaPixel.svg';
 import seta from '../../assets/image/seta.svg';
 import tracos from '../../assets/image/tracos.svg';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
 
-import '../../css/global.css';
 
 export default function Cabecalho1() {
     const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +29,6 @@ export default function Cabecalho1() {
         if (token) {
             try {
                 const decodedToken = jwtDecode(token);
-                console.log('Dados decodificados do token:', decodedToken);
                 setUsuario(decodedToken);
                 setIsOpen(!isOpen);
                 navigate('/menu', { state: decodedToken });
@@ -45,7 +47,6 @@ export default function Cabecalho1() {
     };
 
     const token = localStorage.getItem('token');
-
 
     return (
         <section className='cabecalho1Estilo'>

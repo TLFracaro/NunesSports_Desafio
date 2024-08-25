@@ -1,12 +1,20 @@
-import axios from 'axios';
+/*Import Estilo*/
+import './index.scss';
+import '../../css/global.css';
+
+/*Import Bibliotecas*/
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode'; 
+
+/*Import Componentes*/
 import Cabecalho1 from '../../components/Cabecalho1';
 import Rodape from '../../components/Rodape';
-import '../../css/global.css';
-import './index.scss';
+
+/*Import Imagens*/
 import loginImagem from "../../assets/image/loginImage.png";
-import { jwtDecode } from 'jwt-decode'; // Ajustado para usar a exportação nomeada
+
+/*Import Requisição API*/
 import api from '../../api';
 
 export default function Login() {
@@ -36,7 +44,6 @@ export default function Login() {
 
     const login = async () => {
         try {
-            // Validação dos campos de entrada
             if (email.trim() === '' || senha.trim() === '') {
                 setTexto('Preencha os campos e-mail e senha!');
                 mostrarModal();
@@ -45,18 +52,13 @@ export default function Login() {
 
             const body = { email, senha };
 
-            // Requisição ao servidor
             const response = await api.post(`/login`, body);
             console.log('Resposta da requisição:', response.data);
 
-            // Verificação da resposta
             if (response.data.message === 'Login bem-sucedido') {
                 const { token } = response.data;
-                // Armazenamento do token (considere usar cookies em vez de localStorage)
                 localStorage.setItem('token', token);
-
-                // Decodificar o token para obter os dados do usuário
-                const decodedToken = jwtDecode(token); // Ajustado para usar jwtDecode
+                const decodedToken = jwtDecode(token);
                 console.log('Dados decodificados do token:', decodedToken);
 
                 console.log('Navegando para o menu com estado:', decodedToken);

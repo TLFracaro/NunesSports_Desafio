@@ -1,7 +1,12 @@
+/*Import Estilo*/
 import './index.scss';
-import carrinho from '../../assets/image/carrinho.svg';
 import '../../css/global.css';
+
+/*Import Bibliotecas*/
 import { useNavigate } from "react-router-dom";
+
+/*Import Imagens*/
+import carrinho from '../../assets/image/carrinho.svg';
 
 export default function Produto(props) {
     const navigate = useNavigate();

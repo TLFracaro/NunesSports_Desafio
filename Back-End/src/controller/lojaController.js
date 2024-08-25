@@ -1,4 +1,3 @@
-//alterei aqui
 import { inserirUsuario, salvarItem, logar, listarUsuarios, excluirUsuario, alterarUsuario, excluirItem, listarItens, consultarItem, alterarItem, pesquisarUsuario, listarItensHome } from '../repository/lojaRepository.js';
 import multer from 'multer';
 import { Router } from 'express';
@@ -382,7 +381,7 @@ endpoints.post('/login', async (req, resp) => {
 endpoints.get('/produto/listar/home', async (req, resp) => {
     try {
         const resultadoListarHome = await listarItensHome();
-        resp.json(resultadoListarHome); // Envia a resposta como JSON
+        resp.json(resultadoListarHome);
     } catch (error) {
         console.error('Erro ao listar produtos para a home:', error);
         resp.status(400).send({
