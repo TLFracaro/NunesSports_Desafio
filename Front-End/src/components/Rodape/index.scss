@@ -7,7 +7,7 @@
         background-color: #001D3D;
         width: 100%;
         height: 100%;
-        
+
         padding: 25px;
 
         .conteudoFooter {
@@ -82,19 +82,48 @@
 
         @media screen and (max-width: 767px) {
             .conteudoFooter {
-                align-items: center;
-                justify-content: center;
+
+                .conteudo1,
+                .conteudo2,
+                .conteudo3,
+                .conteudo4,
+                .conteudo5 {
+                    margin: 20px;
+                }
+
+                .conteudo3{
+                    height: 100%;
+                }
+
+                display: flex;
+                flex-wrap: wrap;
                 grid-template-columns: 250px 250px;
                 grid-template-rows: 150px 150px 150px
             }
         }
+
         @media screen and (max-width: 390px) {
             .conteudoFooter {
-                .conteudo1{
+
+                .conteudo1,
+                .conteudo2,
+                .conteudo3,
+                .conteudo4,
+                .conteudo5 {
+                    margin: 20px;
+                }
+
+                .conteudo3{
+                    height: 100%;
+                }
+
+                display: flex;
+                flex-wrap: wrap;
+
+                .conteudo1 {
                     margin-top: 50px;
                 }
-                align-items: center;
-                justify-content: center;
+
                 grid-template-columns: 250px;
                 grid-template-rows: 100px 100px 200px 100px 100px
             }

@@ -212,8 +212,8 @@ export default function Produtos() {
                                 ))}
                             </table>
                         )}
-                        <p>{`Total de itens: ${produtos.length}`}</p>
                     </div>
+
                     <div className='tabeleMobile'>
                         {filtrarProdutos().length === 0 ? (
                             <p>Nenhum produto encontrado com esse nome e categoria =&#40;</p>
@@ -259,8 +259,10 @@ export default function Produtos() {
                                 ))}
                             </table>
                         )}
-                        <p>{`Total de itens: ${produtos.length}`}</p>
+
                     </div>
+
+                    <p>{`Total de itens: ${produtos.length}`}</p>
                 </div>
             </main>
 

@@ -194,8 +194,8 @@ export default function GerenciamentoUsuario() {
                                 </tbody>
                             </table>
                         )}
-                        <p>Total de usuários: {usuarios.length}</p>
                     </div>
+                        <p>Total de usuários: {usuarios.length}</p>
                 </div>
             </main>
             <Rodape />

@@ -15,6 +15,11 @@
 </p>
 
 <p align="center">
+  <img src="https://github.com/user-attachments/assets/2c34e10e-44bc-4864-a8cf-3a9e738f9595" alt="NunesSports Demonstração Visual Vídeo"/>
+  <a href="https://drive.google.com/file/d/1YA2d2cZP0c1RnVF40OvfmFmRw4MAgS35/view?usp=sharing" style="font-size: 30px; color: #B70000;">Clique aqui para acessar o vídeo de demonstração visual do projeto no meu Drive.</a>
+</p>
+
+<p align="center">
   <img src="https://github.com/user-attachments/assets/e6971d55-0af1-4965-859a-2f921e361942" alt="Tela inicial"/>
   <img src="https://github.com/user-attachments/assets/c3aaf774-36fc-4d0b-86a1-1a43a7272d58" alt="Tela inicial"/>
 </p>
@@ -61,3 +66,19 @@
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/45035563-2037-4e30-88b2-22f0723369f7" alt="Excluir Produtos"/>
+  <img src="https://github.com/user-attachments/assets/23eb2e4b-9a4f-44e4-be7b-4475f559a635" alt="Excluir Produtos"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/bf239e65-249c-4463-87e6-927e47a0fe01" alt="Permissao usuarios"/>
+  <img src="https://github.com/user-attachments/assets/8e78fec2-2f6c-4f05-8c24-14829e747b11" alt="Permissao usuarios"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/adcf327d-be31-4abd-b7b6-eb94640f5a0f" alt="Site com responsividade"/>
+  <img src="https://github.com/user-attachments/assets/317af615-6d11-41a1-9c23-5cff71bcb5d8" alt="Permissao usuarios"/>
+</p>
+
+<p align="center">
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=001D3D&height=120&section=footer"/>
+</p>
